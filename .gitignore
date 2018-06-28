@@ -1,0 +1,9 @@
+build
+venv
+
+*.swa
+*.swp
+*.swo
+*.pyc
+__pycache__
+*.zip

@@ -1,0 +1,17 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-2:123456789123:AutoScalingNotifications:00000000-0000-0000-0000-000000000000",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "00000000-0000-0000-0000-000000000000",
+        "TopicArn": "arn:aws:sns:us-east-2:123456789:AutoScalingNotifications",
+        "Timestamp": "2016-09-16T12:39:01.661Z",
+        "Message": "{\"Service\":\"AWS Auto Scaling\",\"Time\":\"2016-09-30T20:42:11.305Z\",\"RequestId\":\"18b2ec17-3e9b-4c15-8024-ff2e8ce8786a\",\"LifecycleActionToken\":\"71514b9d-6a40-4b26-8523-05e7ee35fa40\",\"AccountId\":\"123456789012\",\"AutoScalingGroupName\":\"demo-app-asg\",\"LifecycleHookName\":\"my-hook\",\"EC2InstanceId\":\"i-0cd7bd317ec306a76\",\"LifecycleTransition\":\"autoscaling:EC2_INSTANCE_TERMINATE\",\"NotificationMetadata\":\"null\"}"
+      }
+    }
+  ]
+}
+

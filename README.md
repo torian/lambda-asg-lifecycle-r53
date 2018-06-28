@@ -10,14 +10,15 @@ and will add or remove instances from it.
 ## Environment variables
 
 | Variable      | Kind       | Default     | Notes |
+|---------------|------------|-------------|-------|
 | `AWS_REGION`  | Optional   | `us-east-2` | - |
 | `AWS_PROFILE` | Optional   | empty       | Only needed when running from local |
-| `LOGLEVEL`    | Optional   | `INFO`      | = |
+| `LOGLEVEL`    | Optional   | `INFO`      | - |
 | `DRY_RUN`     | Optional   | `True`      | Simulate what would be done |
 | `R53_DOMAIN`  | check note | `empty`     | Specify which `Route53` zone to use by domain. Takes precedence over `R53_ZONE_ID` |
 | `R53_ZONE_ID` | check note | `empty`     | Specify which `Route53` zone to use bu zone id |
 
-*NOTE*: If `R53_DOMAIN` and `R53_ZONE_ID` are empty, the lambda function will raise an error
+**NOTE**: If `R53_DOMAIN` and `R53_ZONE_ID` are empty, the lambda function will raise an error
 
 ## Testing locally
 

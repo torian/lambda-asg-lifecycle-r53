@@ -45,3 +45,11 @@ aws s3 \
   --region  ${AWS_REGION} \
   cp ${PROJECT_NAME}.zip s3://${AWS_S3_BUCKET}/${AWS_S3_PREFIX}/${PROJECT_NAME}/
  
+aws lambda \
+  ${PROFILE} \
+  --region  ${AWS_REGION} \
+  update-function-code \
+    --function-name ${PROJECT_NAME} \
+    --s3-bucket ${AWS_S3_BUCKET} \
+    --s3-key ${AWS_S3_PREFIX}/${PROJECT_NAME}/${PROJECT_NAME}.zip \
+    --publish

@@ -1,10 +1,13 @@
 
 PYTHON_VERSION=${PYTHON_VERSION:-2.7}
-PROJECT_NAME=asg-lifecyclehook-r53
+PROJECT_NAME=asg-lifecycle-hook
 BUILD_PREFIX=./build
 
 AWS_REGION=${AWS_REGION:-us-east-1}
 AWS_PROFILE=${AWS_PROFILE:-default}
+
+AWS_S3_BUCKET=${AWS_S3_BUCKET:-''}
+AWS_S3_PREFIX=${AWS_S3_PREFIX:-''}
 
 [ ! -d ${BUILD_PREFIX} ] && mkdir ${BUILD_PREFIX}
 
@@ -30,9 +33,15 @@ find ./ -type d -name "__pycache__" -exec rm -rf \{} \;
 # Build zip package to be deployed to AWS
 pushd ${BUILD_PREFIX} && zip -r ../${PROJECT_NAME}.zip ./ -x "*.pyc" "*.swa" "*.swp" && popd
 
-aws lambda update-function-code \
-  --profile ${AWS_PROFILE} \
-  --function-name ${PROJECT_NAME} \
-  --zip-file fileb://${PROJECT_NAME}.zip \
-  --region ${AWS_REGION}
+if [ -z "${AWS_S3_BUCKET}" ] || [ -z "${AWS_S3_PREFIX}" ]; then
+  echo "S3 Bucket or S3 prefix not defined, skipping artifact upload"
+  exit 1
+fi
 
+[ -n "${AWS_PROFILE}" ] && PROFILE="--profile ${AWS_PROFILE}"
+
+aws s3 \
+  ${PROFILE} \
+  --region  ${AWS_REGION} \
+  cp ${PROJECT_NAME}.zip s3://${AWS_S3_BUCKET}/${AWS_S3_PREFIX}/${PROJECT_NAME}/
+ 

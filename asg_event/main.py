@@ -23,12 +23,12 @@ TRANSITIONS = {
 }
 
 def asg_instances(asg_name = None):
-  asg = aws.AutoScalingGroup(AWS_REGION)
+  asg = aws.AutoScalingGroup(REGION)
   asg.describe(asg_name)
   return asg.getInstanceIdsByAz()
 
 def r53_update(instance, azs_instances = {}, host_prefix = ''):
-  ec2 = aws.EC2(AWS_REGION)
+  ec2 = aws.EC2(REGION)
   r53 = aws.Route53(R53_DOMAIN, R53_ZONE_ID)
 
   ips = {}

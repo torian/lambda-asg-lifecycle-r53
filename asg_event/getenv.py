@@ -13,9 +13,9 @@ DRY_RUN = distutils.util.strtobool(os.environ.get('DRY_RUN', 'True'))
 LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
 
 # AWS Region & Profile
-#  AWS_REGION should always be specified
+#  REGION should always be specified
 #  AWS_PROFILE might be specified when running locally (development)
-AWS_REGION  = os.environ.get('AWS_REGION',  'us-east-2')
+REGION      = os.environ.get('REGION',  'us-east-2')
 AWS_PROFILE = os.environ.get('AWS_PROFILE', '')
 
 # R53 settings and toggles

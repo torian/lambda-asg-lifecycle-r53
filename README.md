@@ -11,7 +11,7 @@ and will add or remove instances from it.
 
 | Variable      | Kind       | Default     | Notes |
 |---------------|------------|-------------|-------|
-| `AWS_REGION`  | Optional   | `us-east-2` | - |
+| `REGION`  | Optional   | `us-east-2` | - |
 | `AWS_PROFILE` | Optional   | empty       | Only needed when running from local |
 | `LOGLEVEL`    | Optional   | `INFO`      | - |
 | `DRY_RUN`     | Optional   | `True`      | Simulate what would be done |
@@ -39,7 +39,7 @@ $> python-lambda-local \
 Make sure to have a lambda function created wit the name of this repo, and that
 you export the following variables:
 
-  * `AWS_REGION`
+  * `REGION`
   * `AWS_PROFILE`
 
 ```

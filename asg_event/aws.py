@@ -24,7 +24,7 @@ logger_boto3.setLevel('WARNING')
 
 class AutoScalingGroup():
 
-  def __init__(self, region = AWS_REGION):
+  def __init__(self, region = REGION):
     self.conn = boto3.client('autoscaling', region_name = region)
 
     self.asg        = None
@@ -135,7 +135,7 @@ class Route53():
 
 class EC2():
 
-  def __init__(self, region = AWS_REGION):
+  def __init__(self, region = REGION):
     self.conn = boto3.client('ec2', region_name = region)
 
   def getInstancesPrivateIp(self, instance_ids = []):

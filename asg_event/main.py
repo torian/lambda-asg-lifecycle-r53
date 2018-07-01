@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(getattr(logging, LOGLEVEL))
 
 TRANSITIONS = {
-  'term':   "autoscaling:EC2_INSTANCE_TERMINATE",
+  'term':   "autoscaling:EC2_INSTANCE_TERMINATING",
   'launch': "autoscaling:EC2_INSTANCE_LAUNCHING"
 }
 

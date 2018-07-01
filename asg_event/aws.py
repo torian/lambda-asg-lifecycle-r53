@@ -125,7 +125,7 @@ class Route53():
     logger.debug("Route53 UPSERT:")
     logger.debug(json.dumps(changeBatch, indent = 2))
 
-    if DRY_RUN:
+    if not DRY_RUN:
         self.conn.change_resource_record_sets(
           HostedZoneId = self.zone_id,
           ChangeBatch  = changeBatch

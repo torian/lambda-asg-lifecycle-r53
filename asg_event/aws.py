@@ -51,13 +51,13 @@ class AutoScalingGroup():
       lambda i: i['InstanceId'], self.asg['Instances']
     )
 
-  def getInstanceIdsByAz(self):
+  def getInstanceIdsByAz(self, health = "Healthy"):
     for az in self.asg['AvailabilityZones']:
       logger.debug("Getting instances from AZ {}".format(az))
       self.asg_az_ids[az] = map(
         lambda i: i['InstanceId'], 
         filter(
-          lambda j: j['AvailabilityZone'] == az,
+          lambda j: j['AvailabilityZone'] == az and j['HealthStatus'] == health,
           self.asg['Instances']
         )
       )

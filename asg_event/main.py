@@ -65,11 +65,19 @@ def main(event, context):
 
   az_instances = asg_instances(msg['AutoScalingGroupName'])
 
+  event_instance_id = msg['EC2InstanceId']
+ 
+  event_instance_az = filter(
+    lambda i: event_instance_id in az_instances[i], az_instances
+  )
+
   if msg['LifecycleTransition'] == TRANSITIONS['term']:
     pass
 
   if msg['LifecycleTransition'] == TRANSITIONS['launch']:
     pass
+
+  logger.debug("Instances: {}".format(az_instances))
 
   host_prefix = msg['AutoScalingGroupName'].replace('-asg', '')
   r53_update(msg['EC2InstanceId'], az_instances, host_prefix)

@@ -5,8 +5,6 @@ import distutils.util
 
 ###############################################################################
 
-RUN_LOCAL = distutils.util.strtobool(os.environ.get('LOCAL', 'False'))
-
 # DRY_RUN: If set to True, simulate what would be done
 DRY_RUN = distutils.util.strtobool(os.environ.get('DRY_RUN', 'True'))
 
